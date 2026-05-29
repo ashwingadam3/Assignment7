@@ -1,0 +1,31 @@
+[project]
+name = "eagv3-s7"
+version = "0.1.0"
+description = "EAGV3 Session 7 agent: S6 cognitive architecture plus FAISS-backed vector memory and document indexing tools."
+requires-python = ">=3.11"
+dependencies = [
+    "mcp[cli]",
+    "httpx",
+    "ddgs",
+    "tavily-python",
+    "crawl4ai",
+    "python-dotenv",
+    "pydantic>=2.13.4",
+    "faiss-cpu>=1.8.0",
+    "numpy>=1.26",
+    "pymupdf>=1.27.2.3",
+]
+
+[dependency-groups]
+dev = [
+    "pytest",
+    "pytest-asyncio",
+]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "session"
+markers = [
+    "network: test requires internet access",
+    "embed: test requires the embedding endpoint (gateway V7)",
+]
